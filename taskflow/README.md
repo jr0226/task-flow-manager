@@ -1,20 +1,30 @@
-# TaskFlow — Phase 1
+# TaskFlow — Frontend Workspace
 
-A responsive React + JavaScript workspace built on the existing Vite project. Phase 1 is a local frontend: it does not yet provide accounts, a backend, team access, or cloud synchronization.
+This directory contains the React 19 + Vite frontend application for **TaskFlow**. For the full project overview, features, roadmap, and architecture, refer to the [Root README](../README.md).
 
-## Run on Windows
+## Quick Start
 
-Open the outer TaskFlow folder in VS Code. The React application is inside `taskflow`.
+```bash
+# Navigate to the frontend directory
+cd taskflow
 
-```powershell
-cd "C:\Users\chaij\Desktop\Code project\Python\TaskFlow\taskflow"
-npm.cmd ci
-npm.cmd run dev -- --port 5173 --strictPort
+# Install dependencies
+npm ci
+
+# Start the Vite development server
+npm run dev
 ```
 
-Open http://localhost:5173/. Keep the terminal running. Dependencies are already installed in the current workspace; `npm.cmd ci` is only needed after a fresh download or dependency changes.
+The application runs at `http://localhost:5173/`.
 
-Alternatively, select **Debug TaskFlow** in VS Code and press **F5**. This starts Vite automatically. Stop a manually started server first if port 5173 is occupied. Keep using the same URL: `localhost`, `127.0.0.1`, and different ports have separate browser storage.
+### Verification Commands
+
+```bash
+npm test         # Run unit tests via node:test
+npm run lint     # Run ESLint checks
+npm run build    # Build production bundle
+npm run preview  # Preview production build
+```
 
 ## Features
 
@@ -36,18 +46,7 @@ Tasks are stored under `taskflow.tasks.v1` in localStorage, and theme under `tas
 
 Clearing browser site data removes the tasks. Export a JSON backup before switching browsers or clearing storage. JSON import is not implemented in this phase. Storage errors are shown, and unsuccessful writes never display success or silently update task state. Invalid saved data is preserved and editing is blocked until it is recovered or deliberately cleared outside the application.
 
-## Verification commands
-
-```powershell
-npm.cmd test
-npm.cmd run lint
-npm.cmd run build
-npm.cmd run preview
-```
-
-`npm.cmd test` uses the built-in Node test runner; no additional test framework is needed. Tests cover validation, local-date overdue behavior, completion timestamps, combined filtering/sorting, summary calculations, and invalid or inaccessible storage.
-
-Browser verification checklist:
+### Browser Verification Checklist:
 
 1. Create a task with a project, priority and a due date in the past. Confirm the summary and deadline list update.
 2. Reload. The task should remain.
