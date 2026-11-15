@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start TaskFlow dev server",
+            "type": "shell",
+            "command": "npm",
+            "args": ["run", "dev", "--", "--port", "5173", "--strictPort"],
+            "options": {
+                "cwd": "${workspaceFolder}/taskflow"
+            },
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "vite",
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+): (error|warning): (.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "VITE.*|vite.*",
+                    "endsPattern": "Local:.*http://localhost:5173/"
+                }
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        }
+    ]
+}
